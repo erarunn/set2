@@ -9,7 +9,7 @@ stages:
     params:
       params.yaml:
         base.random_state: 47
-        data_source.local_path: https://raw.githubusercontent.com/TripathiAshutosh/dataset/main/red_wine.csv
+        data_source.local_path: C:\MLOps\dvc-main\Full_data\red_wine.csv
         split.split_ratio: 0.2
     outs:
     - path: data/split

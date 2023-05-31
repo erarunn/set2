@@ -5,7 +5,7 @@ base:
 
 data_source:
   # gs_path: gs://dvc_project/
-  local_path: https://raw.githubusercontent.com/TripathiAshutosh/dataset/main/red_wine.csv
+  local_path: C:\MLOps\dvc-main\Full_data\red_wine.csv
 
 split:
   dir: data/split
