@@ -1,4 +1,7 @@
 [core]
-    remote = local
+    remote = ssh_remote
 ['remote "local"']
     url = ../../dvc_remote
+['remote "ssh_remote"']
+    url = ssh://dvc_apc_remote_user@107.99.131.214:/dvc_apc_remote_cache/hostnextra_expt
+    password = Semco!23
