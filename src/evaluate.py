@@ -85,7 +85,7 @@ if __name__=="__main__":
 
     # Evaluate train and test datasets.
     EVAL_PATH = "eval"
-    live = Live(os.path.join(EVAL_PATH, "live"), dvcyaml=False)
+    live = Live(os.path.join(EVAL_PATH, "live"))#, dvcyaml=False
     evaluate(param_yaml_path,model, train, "train", live)
     evaluate(param_yaml_path,model, test, "test", live)
     live.make_summary()
