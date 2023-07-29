@@ -14,8 +14,8 @@ jobs:
           pip install -r src/requirements.txt
 
           # Pull data & run-cache from S3 and reproduce pipeline
-          dvc add data
-          dvc pull data# --run-cache
+          dvc add red_wine.csv
+          dvc pull red_wine.csv# --run-cache
           dvc repro
 
           # Report metrics
