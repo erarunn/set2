@@ -12,11 +12,9 @@ jobs:
         run: |
           # Install requirements
           pip install -r src/requirements.txt
-            git rm -r --cached 'red_wine.csv'
-            git commit -m "stop tracking red_wine.csv" 
           # Pull data & run-cache from S3 and reproduce pipeline
-          dvc add red_wine.csv
-          dvc pull red_wine.csv# --run-cache
+         
+          dvc pull 
           dvc repro
 
           # Report metrics
