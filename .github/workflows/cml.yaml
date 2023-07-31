@@ -9,9 +9,8 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          pwd
-          curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-          py -3 get-pip.py
+          echo pwd
+          
           # Install requirements
           pip install -r src/requirements.txt
           # Pull data & run-cache from S3 and reproduce pipeline
