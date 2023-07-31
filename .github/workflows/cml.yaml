@@ -26,4 +26,4 @@ jobs:
           git fetch --prune
           py -3 -m dvc metrics diff main >> report.md
           py -3 -m dvc plots show >> report.md
-          py -3 -m cml comment create report.md
+          cml comment create report.md
