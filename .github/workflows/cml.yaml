@@ -9,7 +9,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          pwd >>  report.md
+          pwd >> report.md
           
           # Install requirements
           py -3 -m pip install -r src/requirements.txt
