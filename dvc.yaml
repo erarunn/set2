@@ -54,7 +54,7 @@ stages:
     - eval/live/metrics.json:
         cache: false
 
-    plots:
+plots:
 - ROC:
     template: simple
     x: fpr
