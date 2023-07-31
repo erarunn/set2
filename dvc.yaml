@@ -1,6 +1,6 @@
 stages:
   data_split:
-    cmd: python src/data_split.py
+    cmd: py src/data_split.py
     deps:
     - src/data_split.py
     params:
@@ -10,7 +10,7 @@ stages:
     outs:
     - data/split
   data_processing:
-    cmd: python src/data_processing.py data/processed
+    cmd: py src/data_processing.py data/processed
     deps:
     - data/split
     - src/data_processing.py
@@ -24,7 +24,7 @@ stages:
     outs:
     - data/processed
   train:
-    cmd: python src/train.py data/features model/model.pkl
+    cmd: py src/train.py data/features model/model.pkl
     deps:
     - data/processed
     - src/train.py
@@ -39,7 +39,7 @@ stages:
     outs:
     - model/model.pkl
   evaluate:
-    cmd: python src/evaluate.py model/model.pkl data/processed
+    cmd: py src/evaluate.py model/model.pkl data/processed
     deps:
     - data/processed
     - model/model.pkl
@@ -54,4 +54,23 @@ stages:
     - eval/live/metrics.json:
         cache: false
 
-
+    plots:
+- ROC:
+    template: simple
+    x: fpr
+    y:
+      eval/live/plots/sklearn/roc/train.json: tpr
+      eval/live/plots/sklearn/roc/test.json: tpr
+- Confusion-Matrix:
+    template: confusion
+    x: actual
+    y:
+      eval/live/plots/sklearn/cm/train.json: predicted
+      eval/live/plots/sklearn/cm/test.json: predicted
+- Precision-Recall:
+    template: simple
+    x: recall
+    y:
+      eval/prc/train.json: precision
+      eval/prc/test.json: precision
+- eval/importance.png
