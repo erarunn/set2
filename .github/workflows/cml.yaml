@@ -11,6 +11,8 @@ jobs:
         shell: cmd
         run: |
           pwd >> report.md
+          echo py -3 --version
+          py -3 -m pip install --upgrade pip
           py -3 -m pip install cml
           # Install requirements
           py -3 -m pip install -r src/requirements.txt
