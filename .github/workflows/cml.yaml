@@ -11,7 +11,7 @@ jobs:
         run: |
           pwd
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-          C:\Users\admin\AppData\Local\Programs\Python\Python311\python.exe get-pip.py
+          py -3 get-pip.py
           # Install requirements
           pip install -r src/requirements.txt
           # Pull data & run-cache from S3 and reproduce pipeline
