@@ -18,7 +18,7 @@ jobs:
          
           
           
-          dvc repro
+          py -3 -m dvc repro
 
           # Report metrics
           echo "## Metrics" >> report.md
