@@ -13,6 +13,7 @@ jobs:
           
           # Install requirements
           py -3 -m pip install -r src/requirements.txt
+          py -3 -m pip install dvc
           # Pull data & run-cache from S3 and reproduce pipeline
          
           
