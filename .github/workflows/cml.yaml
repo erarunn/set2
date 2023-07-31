@@ -12,7 +12,7 @@ jobs:
           echo pwd
           
           # Install requirements
-          pip install -r src/requirements.txt
+          py -3 -m pip install -r src/requirements.txt
           # Pull data & run-cache from S3 and reproduce pipeline
          
           
