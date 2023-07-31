@@ -10,7 +10,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pwd
-          
+          C:\MLOps\dvcdemoenv1\Scripts\activate
           # Install requirements
           py -3 -m pip install -r src/requirements.txt
           # Pull data & run-cache from S3 and reproduce pipeline
