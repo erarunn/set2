@@ -9,11 +9,13 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          pwd
           # Install requirements
           pip install -r src/requirements.txt
           # Pull data & run-cache from S3 and reproduce pipeline
          
-          pwd
+          
+          
           dvc repro
 
           # Report metrics
