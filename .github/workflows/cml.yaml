@@ -23,6 +23,6 @@ jobs:
           # Report metrics
           echo "## Metrics" >> report.md
           git fetch --prune
-          dvc metrics diff master --show-md >> report.md
-          dvc plots show >> report.md
+          py -3 -m dvc metrics diff master --show-md >> report.md
+          py -3 -m dvc plots show >> report.md
           cml comment create report.md
