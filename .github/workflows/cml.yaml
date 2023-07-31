@@ -2,8 +2,7 @@ name: model-training
 on: [push]
 jobs:
   run:
-    runs-on: ubuntu-latest
-    container: docker://dvcorg/cml-py3:latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - name: Train model
@@ -14,7 +13,7 @@ jobs:
           pip install -r src/requirements.txt
           # Pull data & run-cache from S3 and reproduce pipeline
          
-          
+          pwd
           dvc repro
 
           # Report metrics
