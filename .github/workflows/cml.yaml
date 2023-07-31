@@ -9,7 +9,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo pwd
+          pwd
           
           # Install requirements
           py -3 -m pip install -r src/requirements.txt
