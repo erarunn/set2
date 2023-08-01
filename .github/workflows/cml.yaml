@@ -19,20 +19,7 @@ jobs:
         run: |
           conda info
           conda list
-      - name: PowerShell
-        shell: powershell
-        run: |
-          conda info
-          conda list
-      - name: PowerShell Core
-        shell: pwsh
-        run: |
-          conda info
-          conda list
-      - name: Cmd.exe
-        shell: cmd /C CALL {0}
-        run: >-
-          conda info && conda list
+
 
 
           echo pwd >> report.md
