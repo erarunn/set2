@@ -8,7 +8,9 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2
         with:
           installer-url: https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe
-          auto-activate-base: false
+          allow-softlinks: true
+          show-channel-urls: true
+          use-only-tar-bz2: true
           activate-environment: foo
       - name: cmd
         shell: cmd
