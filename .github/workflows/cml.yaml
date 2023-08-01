@@ -16,6 +16,11 @@ jobs:
           python --version >> report.md
           cml comment create --pr report.md
       - name: Train model
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - uses: actions/checkout@v3
+      - uses: iterative/setup-cml@v1
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: cmd
