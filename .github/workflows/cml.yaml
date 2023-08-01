@@ -9,7 +9,6 @@ jobs:
 
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          shell:  powershell -command ". '{0}'".
       - uses: conda-incubator/setup-miniconda@v2
         with:
           miniconda-version: "latest"
