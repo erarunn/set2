@@ -6,8 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
      
-      - name: Bash
-        shell: bash
+      - name: cmd
+        shell: cmd
         run: |
           conda info
           conda list
