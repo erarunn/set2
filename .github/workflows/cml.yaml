@@ -5,7 +5,11 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
       - uses: iterative/setup-cml@v1
+      - uses: iterative/setup-dvc@v1
       - name: cmd
         shell: cmd
         run: |
