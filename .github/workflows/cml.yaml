@@ -9,7 +9,7 @@ jobs:
       - name: cmd
         shell: cmd
         run: |
-          start /wait "" Miniforge3-Windows-x86_64.exe /InstallationType=JustMe /RegisterPython=0 /S /D=%UserProfile%\Miniforge3
+          start /wait "" C:\MLOps\actions-runner\_work\_tool\Miniforge3-Windows-x86_64.exe\0.0.0-8d5179cba43219c4da1e3f70e99afcf3a74ad82a83be4793680512343b903a9e\x64\Miniforge3-Windows-x86_64.exe /InstallationType=JustMe /RegisterPython=0 /S /D=%UserProfile%\Miniforge3
           conda info
           conda list
       - name: Train model
