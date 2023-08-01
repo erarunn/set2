@@ -28,12 +28,10 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: cmd
         run: |
-          py -3 -m pip install --upgrade pip
-          py -3 -m pip --version
-          py -3 -m pip install --upgrade dvc
+          py -3 -m pip install dvc-ssh
           git config --local user.name 'Arun '
           git config --local user.email singh.arun734@gmail.com
-          py -3 -m dvc doctor
+          py -3 -m dvc doctor >> report.md
           py -3 -m dvc exp run --name $TPI_TASK_IDENTIFIER --pull --allow-missing --message 'Studio Cloud Experiment'
           py -3 -m dvc exp push origin $TPI_TASK_IDENTIFIER
           echo "begin: PATH=%PATH%;"
