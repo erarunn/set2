@@ -25,20 +25,20 @@ jobs:
         run: |
         
 
-          python -m venv venv
-          source venv/bin/activate
+          py -3 -m venv venv
+          venv/bin/activate
           git clone https://x-access-token:$STUDIO_GIT_TOKEN@github.com/erarunn/set2 workdir && cd workdir
           git checkout adda7e228770170ac4db84a5be7ce86a16b0325b
-          source /opt/task/credentials
-          pip install --upgrade pip
-          pip --version
-          pip install -r requirements.txt
-          pip install --upgrade dvc
+          /opt/task/credentials
+          py -3 -m pip install --upgrade pip
+          py -3 -m pip --version
+          py -3 -m pip install -r requirements.txt
+          py -3 -m pip install --upgrade dvc
           git config --local user.name 'Arun '
           git config --local user.email singh.arun734@gmail.com
-          dvc doctor
-          dvc exp run --name $TPI_TASK_IDENTIFIER --pull --allow-missing --message 'Studio Cloud Experiment'
-          dvc exp push origin $TPI_TASK_IDENTIFIER
+          py -3 -m dvc doctor
+          py -3 -m dvc exp run --name $TPI_TASK_IDENTIFIER --pull --allow-missing --message 'Studio Cloud Experiment'
+          py -3 -m dvc exp push origin $TPI_TASK_IDENTIFIER
           echo "begin: PATH=%PATH%;"
           
           echo py -3 --version
