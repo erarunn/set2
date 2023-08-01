@@ -6,26 +6,51 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Train model
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          channels: bioconda, conda-forge, defaults
+          use-only-tar-bz2: true  # IMPORTANT: This needs to be set for caching to work properly!
+          auto-update-conda: true
+          auto-activate-base: true
+      - name: Install samtools
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: cmd
+          shell:  powershell -command ". '{0}'".
         run: |
-          pwd >> report.md
-          echo py -3 --version
-          py -3 -m pip install --upgrade pip
-          py -3 -m pip install cml
-          # Install requirements
-          py -3 -m pip install -r src/requirements.txt
-          py -3 -m pip install dvc
-          # Pull data & run-cache from S3 and reproduce  pipeline
-         
-          
-          
-          py -3 -m dvc repro
+            set -x
 
-          # Report metrics
-          echo "## Metrics" >> report.md
-          git fetch --prune
-          py -3 -m dvc metrics diff main >> report.md
-          py -3 -m dvc plots show >> report.md
-          py -3 -m cml comment create report.md
+            echo "begin: PATH=$PATH;"
+
+            _conda create -y --name samtools samtools
+
+            _conda activate samtools || true
+            echo "after conda activate samtools: PATH=$PATH;"
+            which samtools || true
+              
+            $CONDA/bin/activate samtools || true
+            echo "after CONDA/bin/activate samtools: PATH=$PATH;"
+            which samtools || true
+              
+            export PATH="3/envs/samtools/bin:$PATH"
+            echo "after export PATH=3/envs/samtools/bin:PATH: PATH=$PATH;"
+            which samtools || true
+            echo pwd >> report.md
+            echo py -3 --version
+            py -3 -m pip install --upgrade pip
+            py -3 -m pip install cml
+            # Install requirements
+            py -3 -m pip install -r src/requirements.txt
+            py -3 -m pip install dvc
+            # Pull data & run-cache from S3 and reproduce  pipeline
+
+
+
+            py -3 -m dvc repro
+
+            # Report metrics
+            echo "## Metrics" >> report.md
+            git fetch --prune
+            py -3 -m dvc metrics diff main >> report.md
+            py -3 -m dvc plots show >> report.md
+            py -3 -m cml comment create report.md
