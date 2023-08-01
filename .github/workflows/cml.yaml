@@ -25,11 +25,7 @@ jobs:
         run: |
         
 
-          py -3 -m venv venv
-          venv/bin/activate
-          git clone https://x-access-token:$STUDIO_GIT_TOKEN@github.com/erarunn/set2 workdir && cd workdir
-          git checkout adda7e228770170ac4db84a5be7ce86a16b0325b
-          /opt/task/credentials
+          %UserProfile%\Miniforge3\Scripts\activate
           py -3 -m pip install --upgrade pip
           py -3 -m pip --version
           py -3 -m pip install -r requirements.txt
