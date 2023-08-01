@@ -21,24 +21,21 @@ jobs:
         shell: cmd
         run: |
           echo "begin: PATH=%PATH%;"
-          pwd >> report.md
+          
           echo py -3 --version
           py -3 -m pip install --upgrade pip
           py -3 -m pip install cml
-          # Install requirements
           py -3 -m pip install -r src/requirements.txt
           py -3 -m pip install dvc
-          # Pull data & run-cache from S3 and reproduce  pipeline
          
           
           
           py -3 -m dvc repro
 
-          # Report metrics
           echo "## Metrics" >> report.md
           git fetch --prune
           py -3 -m dvc metrics diff main >> report.md
           py -3 -m dvc plots show >> report.md
-
+          cml comment create --pr report.md
 
 
