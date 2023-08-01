@@ -19,6 +19,7 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: cmd
         run: |
+          echo "begin: PATH=%PATH%;"
           pwd >> report.md
           echo py -3 --version
           py -3 -m pip install --upgrade pip
