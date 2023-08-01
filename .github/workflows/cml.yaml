@@ -33,7 +33,7 @@ jobs:
 
           py -3 -m pip install --upgrade pip
           py -3 -m pip --version
-          py -3 -m pip install -r requirements.txt
+          
           py -3 -m pip install --upgrade dvc
           git config --local user.name 'Arun '
           git config --local user.email singh.arun734@gmail.com
@@ -45,7 +45,7 @@ jobs:
           echo py -3 --version
           py -3 -m pip install --upgrade pip
           py -3 -m pip install cml
-          py -3 -m pip install -r src/requirements.txt
+          
           py -3 -m pip install dvc
          
           
