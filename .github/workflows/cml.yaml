@@ -13,6 +13,8 @@ jobs:
           %UserProfile%\Miniforge3\Scripts\activate
           echo "conda info"
           conda list
+          echo "begin: python --version"
+          python --version
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
