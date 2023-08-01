@@ -8,16 +8,9 @@ jobs:
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          miniconda-version: "latest"
-          activate-environment: foo
-      - name: powershell
-        shell: powershell
+        shell: cmd
         run: |
-          conda info
-          conda list
-          echo pwd >> report.md
+          pwd >> report.md
           echo py -3 --version
           py -3 -m pip install --upgrade pip
           py -3 -m pip install cml
@@ -25,9 +18,9 @@ jobs:
           py -3 -m pip install -r src/requirements.txt
           py -3 -m pip install dvc
           # Pull data & run-cache from S3 and reproduce  pipeline
-
-
-
+         
+          
+          
           py -3 -m dvc repro
 
           # Report metrics
@@ -35,4 +28,6 @@ jobs:
           git fetch --prune
           py -3 -m dvc metrics diff main >> report.md
           py -3 -m dvc plots show >> report.md
-          py -3 -m cml comment create report.md
+
+
+
