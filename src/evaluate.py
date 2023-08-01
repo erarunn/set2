@@ -101,7 +101,11 @@ if __name__=="__main__":
     forest_importances.plot.bar(ax=axes)
 
     fig.savefig(os.path.join(EVAL_PATH, "importance.png"))
-
+    # Evaluate train and test datasets.
+    live = Live(os.path.join(EVAL_PATH, "live"), dvcyaml=False)
+    evaluate(model, train, "train", live)
+    evaluate(model, test, "test", live)
+    live.make_summary()
     
 #######################################
 # EVAL_PATH = "eval"
