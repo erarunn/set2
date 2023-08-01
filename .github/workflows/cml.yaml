@@ -28,12 +28,8 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: cmd
         run: |
-        
-
-
           py -3 -m pip install --upgrade pip
           py -3 -m pip --version
-          
           py -3 -m pip install --upgrade dvc
           git config --local user.name 'Arun '
           git config --local user.email singh.arun734@gmail.com
@@ -41,21 +37,11 @@ jobs:
           py -3 -m dvc exp run --name $TPI_TASK_IDENTIFIER --pull --allow-missing --message 'Studio Cloud Experiment'
           py -3 -m dvc exp push origin $TPI_TASK_IDENTIFIER
           echo "begin: PATH=%PATH%;"
-          
-          echo py -3 --version
-          py -3 -m pip install --upgrade pip
-          py -3 -m pip install cml
-          
-          py -3 -m pip install dvc
-         
-          
-          
           py -3 -m dvc repro
-
           echo "## Metrics" >> report.md
           git fetch --prune
           py -3 -m dvc metrics diff main >> report.md
           py -3 -m dvc plots show >> report.md
-          cml comment create report.md
+          cml comment create  --publish report.md
 
 
