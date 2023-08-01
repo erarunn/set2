@@ -9,6 +9,7 @@ jobs:
       - name: cmd
         shell: cmd
         run: |
+         %UserProfile%\Miniforge3\Scripts\activate
           echo "conda info"
           conda list
           echo "begin: python --version"
