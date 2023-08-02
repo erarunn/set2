@@ -35,7 +35,7 @@ jobs:
           py -3 -m dvc exp run --name $TPI_TASK_IDENTIFIER --pull --allow-missing --message 'Studio Cloud Experiment'
           py -3 -m dvc exp push origin $TPI_TASK_IDENTIFIER
           echo "begin: PATH=%PATH%;"
-          py -3 -m dvc repro
+          py -3 -m dvc repro  >> report.md
           echo "## Metrics" >> report.md
           git fetch --prune
           py -3 -m dvc metrics diff main >> report.md
