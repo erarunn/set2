@@ -1,5 +1,5 @@
 base:
-  project: dvc_pipeline_demo
+  project: dvc_pipeline_demo1
   random_state: 47
   target_col: quality
 
