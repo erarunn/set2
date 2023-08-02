@@ -34,7 +34,7 @@ jobs:
           py -3 -m dvc doctor >> report.md
           echo "begin: PATH=%PATH%;"
           py -3 -m dvc exp run --name Arun
-         
+          py -3 -m dvc exp branch Arun exp
           
           echo "## Metrics" >> report.md
           git fetch --prune
