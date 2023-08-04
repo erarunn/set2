@@ -8,7 +8,6 @@ jobs:
         with:
           node-version: '16'
       - uses: iterative/setup-cml@v1
-      - uses: iterative/setup-dvc@v1
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
@@ -26,7 +25,9 @@ jobs:
             PREVIOUS_REF=main
             git fetch origin main:main
           fi
-
+          py -3 -m venv .venv
+          .venv/script/activate
+          python -r src/requirment.txt
           dvc plots diff $PREVIOUS_REF workspace \
             --show-vega --targets ROC | json5 > vega.json
           vl2svg vega.json roc.svg
