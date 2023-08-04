@@ -1,13 +1,14 @@
 name: CML Report
-on: [push]
+on: pull_request
 jobs:
   run:
-    runs-on: self-hosted
+    runs-on: [ubuntu-latest]
     steps:
+      - uses: iterative/setup-cml@v1
       - uses: actions/setup-node@v1  # https://github.com/iterative/cml/issues/1377
         with:
           node-version: '16'
-      - uses: iterative/setup-cml@v1
+      - uses: iterative/setup-dvc@v1
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
@@ -25,9 +26,7 @@ jobs:
             PREVIOUS_REF=main
             git fetch origin main:main
           fi
-          py -3 -m venv .venv
-          .venv/script/activate
-          python -r src/requirment.txt
+
           dvc plots diff $PREVIOUS_REF workspace \
             --show-vega --targets ROC | json5 > vega.json
           vl2svg vega.json roc.svg
@@ -66,4 +65,3 @@ jobs:
           EOF
 
           cml comment create --publish --pr=false report.md
-
