@@ -21,7 +21,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          sudo apt-get install python3.8-venv
+          ### sudo apt-get install python3.8-venv
           curl https://bootstrap.pypa.io/get-pip.py | python
           sudo pip install vitrualenv
           git clone https://github.com/iterative/example-get-started
