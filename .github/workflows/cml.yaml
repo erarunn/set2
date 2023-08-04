@@ -28,6 +28,7 @@ jobs:
           cd example-get-started
           
           pip install -r src/requirements.txt
+          dvc pull
           dvc exp run
           mkdir -p /tmp/dvc-storage
           dvc remote add local -d /tmp/dvc-storage
