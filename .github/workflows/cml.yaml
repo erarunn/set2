@@ -23,11 +23,11 @@ jobs:
         run: |
           ### sudo apt-get install python3.8-venv
           curl https://bootstrap.pypa.io/get-pip.py | python
-          sudo pip install vitrualenv
+          #sudo pip install vitrualenv
           git clone https://github.com/iterative/example-get-started
           cd example-get-started
-          virtualenv -p python3 .venv
-          source .venv/bin/activate
+          python -m venv .venv
+          sudo's -H .venv/bin/activate
           pip install -r src/requirements.txt
           dvc exp run
           mkdir -p /tmp/dvc-storage
