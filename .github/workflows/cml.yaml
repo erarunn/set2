@@ -21,12 +21,12 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          apt install python3.8-venv
-          pip install vitrualenv
+          sudo apt-get install python3.8-venv
+          sudo pip install vitrualenv
           git clone https://github.com/iterative/example-get-started
           cd example-get-started
           virtualenv -p python3 .venv
-          .venv/bin/activate
+          source .venv/bin/activate
           pip install -r src/requirements.txt
           dvc exp run
           mkdir -p /tmp/dvc-storage
