@@ -21,6 +21,7 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          apt install python3.8-venv
           git clone https://github.com/iterative/example-get-started
           cd example-get-started
           python -m venv .venv
