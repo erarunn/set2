@@ -31,7 +31,7 @@ jobs:
           dvc pull
           dvc exp run
           mkdir -p /tmp/dvc-storage
-          dvc remote add local -d /tmp/dvc-storage
+          dvc remote add local /tmp/dvc-storage
           dvc push -r local
           cml ci
            if [ $GITHUB_REF = refs/heads/main ]; then
