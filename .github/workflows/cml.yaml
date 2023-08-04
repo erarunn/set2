@@ -33,7 +33,8 @@ jobs:
           git config --local user.email singh.arun734@gmail.com
           py -3 -m dvc doctor >> report.md
           echo "begin: PATH=%PATH%;"
-          py -3 -m dvc exp run --name Arun
+          py -3 -m dvc exp run
+          py -3 -m dvc exp push
           git add dvc.lock
           
           echo "## Metrics" >> report.md
