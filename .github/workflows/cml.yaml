@@ -39,7 +39,7 @@ jobs:
           else
             PREVIOUS_REF=main
             git fetch origin main:main
-          
+          fi
 
           dvc plots diff $PREVIOUS_REF workspace \
             --show-vega --targets ROC | json5 > vega.json
