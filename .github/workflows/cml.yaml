@@ -35,7 +35,7 @@ jobs:
           dvc push -r local
           cml ci
 
-          fi
+          
 
           dvc plots diff $PREVIOUS_REF workspace \
             --show-vega --targets ROC | json5 > vega.json
