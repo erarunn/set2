@@ -25,7 +25,7 @@ jobs:
           git clone https://github.com/iterative/example-get-started
           cd example-get-started
           python -m venv .venv
-          source .venv/bin/activate
+          sudo .venv/bin/activate
           pip install -r src/requirements.txt
           dvc exp run
           mkdir -p /tmp/dvc-storage
