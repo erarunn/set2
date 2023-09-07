@@ -1,6 +1,6 @@
 stages:
   data_split:
-    cmd: py src/data_split.py
+    cmd: python src/data_split.py
     deps:
     - src/data_split.py
     params:
@@ -10,7 +10,7 @@ stages:
     outs:
     - data/split
   data_processing:
-    cmd: py src/data_processing.py data/processed
+    cmd: python src/data_processing.py data/processed
     deps:
     - data/split
     - src/data_processing.py
@@ -24,7 +24,7 @@ stages:
     outs:
     - data/processed
   train:
-    cmd: py src/train.py data/features model/model.pkl
+    cmd: python src/train.py data/features model/model.pkl
     deps:
     - data/processed
     - src/train.py
@@ -39,7 +39,7 @@ stages:
     outs:
     - model/model.pkl
   evaluate:
-    cmd: py src/evaluate.py model/model.pkl data/processed
+    cmd: python src/evaluate.py model/model.pkl data/processed
     deps:
     - data/processed
     - model/model.pkl

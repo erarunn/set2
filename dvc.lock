@@ -1,31 +1,15 @@
 schema: '2.0'
 stages:
-  data_split:
-    cmd: python src/data_split.py
-    deps:
-    - path: src/data_split.py
-      md5: 1f0647d7bbc5535821086ac6fabe6a1a
-      size: 1291
-    params:
-      params.yaml:
-        base.random_state: 47
-        data_source.local_path: https://raw.githubusercontent.com/TripathiAshutosh/dataset/main/red_wine.csv
-        split.split_ratio: 0.2
-    outs:
-    - path: data/split
-      md5: fb8afee627054aa7017e10d22457ce49.dir
-      size: 93746
-      nfiles: 2
   data_processing:
     cmd: python src/data_processing.py data/processed
     deps:
     - path: data/split
-      md5: fb8afee627054aa7017e10d22457ce49.dir
-      size: 93746
+      md5: 5ef2e6c4a9361aeae4603ccd64ff8c9a.dir
+      size: 93690
       nfiles: 2
     - path: src/data_processing.py
       md5: f9328a5ce9fd23dd845fcd06de47cfea
-      size: 1416
+      size: 1447
     params:
       params.yaml:
         process.dir: data/processed
@@ -36,19 +20,19 @@ stages:
         split.train_file: train.csv
     outs:
     - path: data/processed
-      md5: 95aa4390deb4fc293e1d4f699a6d8a29.dir
-      size: 93746
+      md5: 7ce14b749ed99cf6ad345a4daa8f1ee3.dir
+      size: 93690
       nfiles: 2
   train:
     cmd: python src/train.py data/features model/model.pkl
     deps:
     - path: data/processed
-      md5: 95aa4390deb4fc293e1d4f699a6d8a29.dir
-      size: 93746
+      md5: 7ce14b749ed99cf6ad345a4daa8f1ee3.dir
+      size: 93690
       nfiles: 2
     - path: src/train.py
       md5: 4d59858d9b2d40c0f73cf1eb068f64d7
-      size: 2400
+      size: 2483
     params:
       params.yaml:
         base.random_state: 47
@@ -57,36 +41,52 @@ stages:
         process.dir: data/processed
         process.test_file: final_test.csv
         process.train_file: final_train.csv
-        train.n_est: 10
+        train.n_est: 30
     outs:
     - path: model/model.pkl
-      md5: 1226ef6c8718551d6920a0eab414274c
-      size: 151655
+      md5: b04796170fdb621e3dae7eb76d45e7da
+      size: 412159
   evaluate:
     cmd: python src/evaluate.py model/model.pkl data/processed
     deps:
     - path: data/processed
-      md5: 95aa4390deb4fc293e1d4f699a6d8a29.dir
-      size: 93746
+      md5: 7ce14b749ed99cf6ad345a4daa8f1ee3.dir
+      size: 93690
       nfiles: 2
     - path: model/model.pkl
-      md5: 1226ef6c8718551d6920a0eab414274c
-      size: 151655
+      md5: b04796170fdb621e3dae7eb76d45e7da
+      size: 412159
     - path: src/evaluate.py
-      md5: 5c35a4d54ca6096970a11be009f716fd
-      size: 6759
+      md5: 5b9c1a75f436e642c0a6b78fe2e69cf1
+      size: 7006
     outs:
     - path: eval/importance.png
-      md5: bbe5bd8d3a1d4512f81ef60ea256f5f0
-      size: 19206
+      md5: bcf03369e45fe9da4e40c55bd50a3aa6
+      size: 18530
     - path: eval/live/metrics.json
-      md5: 6149b723bc26b56cefd106ba94e6c0e1
-      size: 206
+      md5: cbe30d94c05695f76f92dfa385e80f03
+      size: 176
     - path: eval/live/plots
-      md5: ac4f60210c0e5a92e201a17c9a9fa6eb.dir
-      size: 106928
+      md5: 390a3a397dfc856ba03f4a3f10909cb1.dir
+      size: 110776
       nfiles: 4
     - path: eval/prc
-      md5: f912197ec11c7ca7f9fc6992f9e6a116.dir
-      size: 2961
+      md5: 76037a1cfacd9d57026356a12b1f01ab.dir
+      size: 7901
+      nfiles: 2
+  data_split:
+    cmd: python src/data_split.py
+    deps:
+    - path: src/data_split.py
+      md5: 1f0647d7bbc5535821086ac6fabe6a1a
+      size: 1327
+    params:
+      params.yaml:
+        base.random_state: 47
+        data_source.local_path: Raw_data/dataset_main_red_wine.csv
+        split.split_ratio: 0.2
+    outs:
+    - path: data/split
+      md5: 5ef2e6c4a9361aeae4603ccd64ff8c9a.dir
+      size: 93690
       nfiles: 2
